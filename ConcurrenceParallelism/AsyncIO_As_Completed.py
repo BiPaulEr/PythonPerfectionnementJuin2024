@@ -11,7 +11,7 @@ async def worker(label):
     return f"Worker {label} result is {result}"
 
 async def creation_de_toutes_les_taches():
-    tasks = (asyncio.create_task(worker(label)) for  label in ["A", "B", "C", "D"])
+    tasks = [asyncio.create_task(worker(label)) for  label in ["A", "B", "C", "D"]]
     for task in asyncio.as_completed(tasks):
         result = await task
         print(f"Result received : {result}")
